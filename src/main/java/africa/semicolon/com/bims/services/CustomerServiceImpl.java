@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import utils.JwtUtils;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -32,7 +33,12 @@ public class CustomerServiceImpl implements CustomerService{
     private CartServices cartServices;
     @Autowired
     private CustomerRepository customerRepository;
-    private ModelMapper modelMapper;
+
+    private final ModelMapper modelMapper;
+
+    public CustomerServiceImpl(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     @Transactional
@@ -48,6 +54,9 @@ public class CustomerServiceImpl implements CustomerService{
             customerRepository.save(customer);
             RegisterCustomerResponse response = new RegisterCustomerResponse();
             response.setMessage("WELCOME TO SOFT STORE");
+            response.setId(customer.getId());
+            response.setCustomerName(customer.getUsername());
+            response.setDateCreated(LocalDateTime.now());
             return modelMapper.map(response, RegisterCustomerResponse.class);
         }catch(PictureUploadFailedException e){
             throw new PictureUploadFailedException(e.getMessage());

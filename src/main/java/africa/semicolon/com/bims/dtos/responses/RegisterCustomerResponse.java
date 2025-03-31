@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 public class RegisterCustomerResponse {
     private Long id;
-    private String seller_name;
+    private String customerName;
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime dateCreated;
