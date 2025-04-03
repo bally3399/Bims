@@ -103,7 +103,7 @@ public class DesignServiceImpl implements DesignService {
         node = patch.apply(node);
         design = mapper.convertValue(node, Design.class);
         design = designRepository.save(design);
-        return this.modelMapper.map(design,EditProductResponse.class);
+        return modelMapper.map(design,EditProductResponse.class);
     }
 
     @Override
