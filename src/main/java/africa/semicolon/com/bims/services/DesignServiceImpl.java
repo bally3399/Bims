@@ -26,9 +26,17 @@ import java.util.Map;
 @RequiredArgsConstructor
 
 public class DesignServiceImpl implements DesignService {
-    private final DesignRepository designRepository;
-    private final ModelMapper modelMapper;
-    private final Cloudinary cloudinary;
+    private  DesignRepository designRepository;
+
+    public DesignServiceImpl(DesignRepository designRepository, ModelMapper modelMapper, Cloudinary cloudinary) {
+        this.designRepository = designRepository;
+        this.modelMapper = modelMapper;
+        this.cloudinary = cloudinary;
+    }
+
+    private  ModelMapper modelMapper;
+    private  Cloudinary cloudinary;
+
 
     @Override
     public Design createDesign(AddDesignRequest createDesignRequest) throws IOException {

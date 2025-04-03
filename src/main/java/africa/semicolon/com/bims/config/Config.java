@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Configuration
 public class Config {
-    @Value("${cloud.api.name}")
+    @Value("${cloud.api.name:default-api-name}")
     private String cloudName;
     @Value("${cloud.api.secret}")
     private String cloudSecret;
