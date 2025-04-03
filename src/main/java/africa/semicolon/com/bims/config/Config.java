@@ -12,9 +12,9 @@ import java.util.Map;
 public class Config {
     @Value("${cloud.api.name:default-api-name}")
     private String cloudName;
-    @Value("${cloud.api.secret}")
+    @Value("${cloud.api.secret:default-secret}")
     private String cloudSecret;
-    @Value("${cloud.api.key}")
+    @Value("${cloud.api.key:default-key}")
     private String cloudKey;
     @Bean
     public Cloudinary cloudinary() {
